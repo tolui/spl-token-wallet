@@ -17,6 +17,13 @@ import { TokenListProvider } from '@solana/spl-token-registry';
 const POPULAR_TOKENS = {
   [MAINNET_URL]: [
     {
+      mintAddress: '6ybxMQpMgQhtsTLhvHZqk8uqao7kvoexY6e8JmCTqAB1',
+      tokenName: 'QUEST',
+      tokenSymbol: 'QUEST',
+      icon:
+        'https://questcoin.org/logo500x500.png',
+    },
+    {
       mintAddress: 'SRMuApVNdxXokk5GT7XD5cUUgXMBCoAz2LHeuAoKWRt',
       tokenName: 'Serum',
       tokenSymbol: 'SRM',
@@ -327,6 +334,23 @@ export function getTokenInfo(mint, endpoint, tokenInfos) {
     // The user has overridden a name locally.
     else {
       info = { ...match, ...info, logoUri: match.logoURI };
+    }
+  } else {
+    if(mint.toBase58() === "6ybxMQpMgQhtsTLhvHZqk8uqao7kvoexY6e8JmCTqAB1"){
+      const quest = {
+        chainId:101,
+        address:"6ybxMQpMgQhtsTLhvHZqk8uqao7kvoexY6e8JmCTqAB1",
+        symbol:"QUEST",
+        name:"QUEST",
+        decimals:4,
+        logoURI:"https://questcoin.org/logo500x500.png",
+        tags:[
+        ],
+        extensions:{
+        website:"https://questcoin.org/"
+        }
+      }
+      info = { ...quest, logoUri: quest.logoURI };
     }
   }
   return { ...info };
