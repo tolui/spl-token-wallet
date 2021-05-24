@@ -24,6 +24,13 @@ const POPULAR_TOKENS = {
         'https://questcoin.org/logo500x500.png',
     },
     {
+      mintAddress: '7zsKqN7Fg2s9VsqAq6XBoiShCVohpGshSUvoWBc6jKYh',
+      tokenName: 'Wrapped ArdCoin',
+      tokenSymbol: 'ARDX',
+      icon:
+        'https://cdn.dex.mn/logo/ardx.png',
+    },
+    {
       mintAddress: 'SRMuApVNdxXokk5GT7XD5cUUgXMBCoAz2LHeuAoKWRt',
       tokenName: 'Serum',
       tokenSymbol: 'SRM',
@@ -351,6 +358,22 @@ export function getTokenInfo(mint, endpoint, tokenInfos) {
         }
       }
       info = { ...quest, logoUri: quest.logoURI };
+    }
+    if(mint.toBase58() === "7zsKqN7Fg2s9VsqAq6XBoiShCVohpGshSUvoWBc6jKYh"){
+      const ardx = {
+        chainId:101,
+        address:"7zsKqN7Fg2s9VsqAq6XBoiShCVohpGshSUvoWBc6jKYh",
+        symbol:"ARDX",
+        name:"Wrapped ArdCoin",
+        decimals:2,
+        logoURI:"https://cdn.dex.mn/logo/ardx.png",
+        tags:[
+        ],
+        extensions:{
+        website:"https://ardcoin.com/"
+        }
+      }
+      info = { ...ardx, logoUri: ardx.logoURI };
     }
   }
   return { ...info };
