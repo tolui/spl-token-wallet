@@ -65,6 +65,9 @@ class PriceStore {
         if(marketName === 'QUESTUSDT'){
           reqUrl = "https://api.dex.mn/orderbooks/";
         }
+        if(marketName === 'ARDXUSDT'){
+          reqUrl = "https://api.dex.mn/orderbooks/";
+        }
         fetch(reqUrl+marketName).then(
         //dex.mn implementation
         //fetch(`https://serum-api.bonfida.com/orderbooks/${marketName}`).then(
