@@ -211,14 +211,14 @@ export default function BalancesList() {
                 </IconButton>
               </Tooltip>
             )}
-          <Tooltip title="Merge Tokens" arrow>
+          {/* <Tooltip title="Merge Tokens" arrow>
             <IconButton
               size={iconSize}
               onClick={() => setShowMergeAccounts(true)}
             >
               <MergeType />
             </IconButton>
-          </Tooltip>
+          </Tooltip> */}
           <Tooltip title="Add Token" arrow>
             <IconButton
               size={iconSize}
@@ -591,15 +591,17 @@ function BalanceListItemDetails({
             </Link>
           </Typography>
           {market && (
+            //dex.mn implementation
             <Typography variant="body2">
               <Link
-                href={`https://dex.projectserum.com/#/market/${market}`}
+                href={`https://dex.mn/#/market/${market}`}
                 target="_blank"
                 rel="noopener"
               >
                 View on Serum
               </Link>
             </Typography>
+            //dex.mn implementation
           )}
           {swapInfo && swapInfo.coin.erc20Contract && (
             <Typography variant="body2">

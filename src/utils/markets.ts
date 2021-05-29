@@ -70,9 +70,6 @@ class PriceStore {
         //fetch(`https://serum-api.bonfida.com/orderbooks/${marketName}`).then(
           (resp) => {
             resp.json().then((resp) => {
-              if(marketName === 'QUESTUSDT'){
-                console.log(resp)
-              }
               if (resp.data.asks === null || resp.data.bids === null) {
                 resolve(undefined);
               } else if (
