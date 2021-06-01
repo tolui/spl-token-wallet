@@ -25,7 +25,6 @@ const RAYDIUM_STAKE_PROGRAM_ID = new PublicKey(
 const RAYDIUM_LP_PROGRAM_ID = new PublicKey(
   'RVKd61ztZW9GUwhRbbLoYVRE5Xf1B2tVscKqwZqXgEr',
 );
-
 const MANGO_PROGRAM_ID = new PublicKey(
   'JD3bq9hGdy38PuWQ4h2YJpELmHVGPPfFSuFkpzAd9zfu',
 );
