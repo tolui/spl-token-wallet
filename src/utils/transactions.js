@@ -15,6 +15,9 @@ import {
 } from '@project-serum/serum';
 import { PublicKey } from '@solana/web3.js';
 import { TOKEN_PROGRAM_ID } from './tokens/instructions';
+//dex.mn implementation
+import BufferLayout from 'buffer-layout';
+//dex.mn implementation
 
 const RAYDIUM_STAKE_PROGRAM_ID = new PublicKey(
   'EhhTKczWMGQt46ynNeRX1WfeagwwJd7ufHvCDjRxjo5Q',
@@ -304,10 +307,19 @@ const decodeTokenInstruction = (bufferData) => {
       return { closeAccount: {} };
     }
   } else {
-    return decodeTokenInstructionData(bufferData);
+    //return decodeTokenInstructionData(bufferData);
+    //dex.mn implementation
+    return decodeTokenInstructionDataFix(bufferData);
+    //dex.mn implementation
   }
 };
-
+//dex.mn implementation
+const decodeTokenInstructionDataFix = (instruction) =>{
+  const LAYOUT = BufferLayout.union(BufferLayout.u8('instruction'));
+  LAYOUT.addVariant(3, BufferLayout.struct([BufferLayout.nu64('amount')]), 'transfer');
+  return LAYOUT.decode(instruction);
+}
+//dex.mn implementation
 const handleSystemInstruction = (publicKey, instruction, accountKeys) => {
   const { programIdIndex, accounts, data } = instruction;
   if (!programIdIndex || !accounts || !data) {
