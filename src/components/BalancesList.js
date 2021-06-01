@@ -545,14 +545,12 @@ function BalanceListItemDetails({
   // Only show the export UI for the native SOL coin.
   const exportNeedsDisplay =
     mint === null && tokenName === 'SOL' && tokenSymbol === 'SOL';
-  console.log(serumMarkets[tokenSymbol.toUpperCase()])
   const market = tokenSymbol
     ? serumMarkets[tokenSymbol.toUpperCase()]
       ? serumMarkets[tokenSymbol.toUpperCase()].publicKey
       : undefined
     : undefined;
   const isSolAddress = publicKey.equals(owner);
-  console.log(market)
   const additionalInfo = isExtensionWidth ? undefined : (
     <>
       <Typography variant="body2">
