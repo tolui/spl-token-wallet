@@ -56,6 +56,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import TokenIcon from './TokenIcon';
 import EditAccountNameDialog from './EditAccountNameDialog';
 import MergeAccountsDialog from './MergeAccountsDialog';
+import SwapButton from './SwapButton';
 
 const balanceFormat = new Intl.NumberFormat(undefined, {
   minimumFractionDigits: 4,
@@ -227,7 +228,8 @@ export default function BalancesList() {
               />
             </IconButton>
           </Tooltip>
-          {/* <Tooltip title="Merge Tokens" arrow>
+          {/* <SwapButton />
+          <Tooltip title="Merge Tokens" arrow>
             <IconButton
               size={iconSize}
               onClick={() => setShowMergeAccounts(true)}
@@ -601,13 +603,13 @@ function BalanceListItemDetails({
           <Typography variant="body2">
             <Link
               href={
-                `https://explorer.solana.com/account/${publicKey.toBase58()}` +
+                `https://solscan.io/account/${publicKey.toBase58()}` +
                 urlSuffix
               }
               target="_blank"
               rel="noopener"
             >
-              View on Solana
+              View on Solscan
             </Link>
           </Typography>
           {market && (

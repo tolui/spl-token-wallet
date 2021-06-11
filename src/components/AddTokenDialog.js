@@ -74,12 +74,13 @@ export default function AddTokenDialog({ open, onClose }) {
     } else if (tab === 'erc20') {
       params = { erc20Address };
     }
-    sendTransaction(addToken(params), {
-      onSuccess: () => {
-        refreshWalletPublicKeys(wallet);
-        onClose();
-      },
-    });
+    console.log("here")
+    // sendTransaction(addToken(params), {
+    //   onSuccess: () => {
+    //     refreshWalletPublicKeys(wallet);
+    //     onClose();
+    //   },
+    // });
   }
 
   async function addToken({
@@ -243,7 +244,7 @@ function TokenListItem({ tokenInfo, onSubmit, disabled, existingAccount }) {
                 target="_blank"
                 rel="noopener"
                 href={
-                  `https://explorer.solana.com/account/${tokenInfo.address}` +
+                  `https://solscan.io/account/${tokenInfo.address}` +
                   urlSuffix
                 }
               >
