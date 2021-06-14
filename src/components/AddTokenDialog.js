@@ -74,13 +74,12 @@ export default function AddTokenDialog({ open, onClose }) {
     } else if (tab === 'erc20') {
       params = { erc20Address };
     }
-    console.log("here")
-    // sendTransaction(addToken(params), {
-    //   onSuccess: () => {
-    //     refreshWalletPublicKeys(wallet);
-    //     onClose();
-    //   },
-    // });
+    sendTransaction(addToken(params), {
+      onSuccess: () => {
+        refreshWalletPublicKeys(wallet);
+        onClose();
+      },
+    });
   }
 
   async function addToken({
