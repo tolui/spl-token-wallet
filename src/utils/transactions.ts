@@ -11,16 +11,13 @@ import {
   NEW_ORDER_V3_OPEN_ORDERS_INDEX,
   NEW_ORDER_V3_OWNER_INDEX,
 } from '@project-serum/serum';
-import { decodeTokenInstruction } from '@project-serum/token';
+//import { decodeTokenInstruction } from '@project-serum/token';
 import { PublicKey } from '@solana/web3.js';
 import { TOKEN_PROGRAM_ID } from './tokens/instructions';
-<<<<<<< HEAD:src/utils/transactions.js
 //dex.mn implementation
 import BufferLayout from 'buffer-layout';
 //dex.mn implementation
-=======
 import { Wallet } from './wallet';
->>>>>>> master:src/utils/transactions.ts
 
 const RAYDIUM_STAKE_PROGRAM_ID = new PublicKey(
   'EhhTKczWMGQt46ynNeRX1WfeagwwJd7ufHvCDjRxjo5Q',
@@ -299,7 +296,6 @@ const handleDexInstruction = async (
   };
 };
 
-<<<<<<< HEAD:src/utils/transactions.js
 const decodeTokenInstruction = (bufferData) => {
   if (!bufferData) {
     return;
@@ -325,8 +321,6 @@ const decodeTokenInstructionDataFix = (instruction) =>{
   return LAYOUT.decode(instruction);
 }
 //dex.mn implementation
-=======
->>>>>>> master:src/utils/transactions.ts
 const handleSystemInstruction = (publicKey, instruction, accountKeys) => {
   const { programIdIndex, accounts, data } = instruction;
   if (!programIdIndex || !accounts || !data) {
