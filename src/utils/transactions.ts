@@ -11,12 +11,9 @@ import {
   NEW_ORDER_V3_OPEN_ORDERS_INDEX,
   NEW_ORDER_V3_OWNER_INDEX,
 } from '@project-serum/serum';
-//import { decodeTokenInstruction } from '@project-serum/token';
+import { decodeTokenInstruction } from '@project-serum/token';
 import { PublicKey } from '@solana/web3.js';
 import { TOKEN_PROGRAM_ID } from './tokens/instructions';
-//dex.mn implementation
-import BufferLayout from 'buffer-layout';
-//dex.mn implementation
 import { Wallet } from './wallet';
 
 const RAYDIUM_STAKE_PROGRAM_ID = new PublicKey(
@@ -25,6 +22,7 @@ const RAYDIUM_STAKE_PROGRAM_ID = new PublicKey(
 const RAYDIUM_LP_PROGRAM_ID = new PublicKey(
   'RVKd61ztZW9GUwhRbbLoYVRE5Xf1B2tVscKqwZqXgEr',
 );
+
 const MANGO_PROGRAM_ID = new PublicKey(
   'JD3bq9hGdy38PuWQ4h2YJpELmHVGPPfFSuFkpzAd9zfu',
 );
@@ -296,31 +294,6 @@ const handleDexInstruction = async (
   };
 };
 
-const decodeTokenInstruction = (bufferData) => {
-  if (!bufferData) {
-    return;
-  }
-
-  if (bufferData.length === 1) {
-    if (bufferData[0] === 1) {
-      return { initializeAccount: {} };
-    } else if (bufferData[0] === 9) {
-      return { closeAccount: {} };
-    }
-  } else {
-    //return decodeTokenInstructionData(bufferData);
-    //dex.mn implementation
-    return decodeTokenInstructionDataFix(bufferData);
-    //dex.mn implementation
-  }
-};
-//dex.mn implementation
-const decodeTokenInstructionDataFix = (instruction) =>{
-  const LAYOUT = BufferLayout.union(BufferLayout.u8('instruction'));
-  LAYOUT.addVariant(3, BufferLayout.struct([BufferLayout.nu64('amount')]), 'transfer');
-  return LAYOUT.decode(instruction);
-}
-//dex.mn implementation
 const handleSystemInstruction = (publicKey, instruction, accountKeys) => {
   const { programIdIndex, accounts, data } = instruction;
   if (!programIdIndex || !accounts || !data) {
