@@ -61,13 +61,14 @@ class PriceStore {
       }
       if (this.cache[marketName] === undefined) {
         //dex.mn implementation
-        let reqUrl = "https://serum-api.bonfida.com/orderbooks/";
-        if(marketName === 'QUESTUSDT'){
-          reqUrl = "https://api.dex.mn/orderbooks/";
-        }
-        if(marketName === 'ARDXUSDT'){
-          reqUrl = "https://api.dex.mn/orderbooks/";
-        }
+        //let reqUrl = "https://serum-api.bonfida.com/orderbooks/";
+        let reqUrl = "https://api.dex.mn/orderbooks/";
+        // if(marketName === 'QUESTUSDT'){
+        //   reqUrl = "https://api.dex.mn/orderbooks/";
+        // }
+        // if(marketName === 'ARDXUSDT'){
+        //   reqUrl = "https://api.dex.mn/orderbooks/";
+        // }
         fetch(reqUrl+marketName).then(
         //dex.mn implementation
         //fetch(`https://serum-api.bonfida.com/orderbooks/${marketName}`).then(
@@ -79,7 +80,6 @@ class PriceStore {
                 resp.data.asks.length === 0 &&
                 resp.data.bids.length === 0
               ) {
-                console.log("here2")
                 resolve(undefined);
               } else if (resp.data.asks.length === 0) {
                 resolve(resp.data.bids[0].price);
