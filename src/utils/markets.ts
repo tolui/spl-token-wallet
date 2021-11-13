@@ -61,11 +61,11 @@ class PriceStore {
       }
       if (this.cache[marketName] === undefined) {
         //dex.mn implementation
-        //let reqUrl = "https://serum-api.bonfida.com/orderbooks/";
-        let reqUrl = "https://api.dex.mn/orderbooks/";
-        // if(marketName === 'QUESTUSDT'){
-        //   reqUrl = "https://api.dex.mn/orderbooks/";
-        // }
+        let reqUrl = "https://serum-api.bonfida.com/orderbooks/";
+        //let reqUrl = "https://api.dex.mn/orderbooks/";
+        if(marketName === 'QUESTUSDT'){
+          reqUrl = "https://api.dex.mn/orderbooks/";
+        }
         // if(marketName === 'ARDXUSDT'){
         //   reqUrl = "https://api.dex.mn/orderbooks/";
         // }
